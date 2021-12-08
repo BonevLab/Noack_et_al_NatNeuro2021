@@ -1,8 +1,8 @@
-# Noack_et_al_NatNeuro2021
+# Multimodal profiling of the regulatory landscape in the developing mouse cerebral cortex identifies Neurog2 as important epigenome remodeler (Noack F., Vangelisti S., Raffl G., Carido M., Diwakar J., Chong F., Bonev B. 2021)
 
 ## **Link** :
 
-## Please cite :
+## Please cite : Noack F et al., Multimodal profiling of the regulatory landscape in the developing mouse cerebral cortex identifies Neurog2 as important epigenome remodeler. Nature Neuroscience (2021) 
 
 
 # Description of Scripts and Analysis 
@@ -49,7 +49,7 @@
 
 **scRNA_scATAC_Integration_05_P2G_monocle** - Pseudotime analysis on integrated scRNA-scATAC object using Monocle3. Analyses also include model fitting to identify changes of accessibility and motif deviations as a function of pseudotime.
 
-**scRNA_scATAC_Integration_06_P2G_analysis** - 
+**scRNA_scATAC_Integration_06_chromVar** - 
 
 ## List of Figures 
 
@@ -59,15 +59,15 @@
 
 **Figure3** - Lineage dynamics of enhancer-gene pairs and transcription factor motifs. Associated Figure S4-S5.
 
-**Figure4** - In vivo (immune-) MPRA validates cell type specific activity of identified CREs and their regulation by transcription factors. 
+**Figure4** - _In vivo_ immunoMPRA validates cell type specific activity of identified CREs and their regulation by transcription factors. 
 
-**Figure5** - Immuno-methyl-HiC identifies DNA methylation-independent global changes in 3D genome architecture during cortical development.
+**Figure5** - ImmunoMethyl-HiC identifies DNA methylation-independent global changes in 3D genome architecture during cortical development.
 
-**Figure6** - Chromatin loops and enhancer methylation levels are highly heterogeneous, yet mostly cell-type specific. 
+**Figure6** - Dynamic enhancer-promoter loops and DNA methylation levels at regulatory regions.
 
 **Figure7** - Transcription factors are associated with changes in both chromatin looping and DNA methylation levels. 
 
-**Figure8** - Neurog2 is sufficient to induce multilayered epigenome changes invivo. 
+**Figure8** - Neurog2 is sufficient to induce multilayered epigenome changes in vivo. 
 
 
 # Raw Data Download 
