@@ -639,7 +639,7 @@ FigureS4G <- function(p2glinks, xlabel, ylabel, posCol, negCol, controlCol,out_f
   dev.off()
 }
 
-FigureS3H <- function(p2glinks, xlabels, ylabels, col1, col2, width, height) {
+FigureS4H <- function(p2glinks, xlabels, ylabels, col1, col2, width, height) {
   df_pos <- data.frame(Domain = p2glinks$posCor$domain, Correlation = rep("Positive", length(p2glinks$posCor)))
   df_pos_tab <- as.data.frame(table(df_pos)) 
   df_pos_tab <- df_pos_tab %>% mutate(., 
@@ -675,7 +675,7 @@ FigureS3H <- function(p2glinks, xlabels, ylabels, col1, col2, width, height) {
   
 }
 
-FigureS3I <- function(controlTable,posCorTable,negCorTable,xlabel, ylabel, col1, col2, col3, width, height){
+FigureS4I <- function(controlTable,posCorTable,negCorTable,xlabel, ylabel, col1, col2, col3, width, height){
   Df_positive <- posCorTable %>% mutate(Correlation = rep("PosCor", nrow(.)))
   Df_negative <- negCorTable %>% mutate(Correlation = rep("NegCor", nrow(.)))
   Df_control <- controlTable %>% mutate(Correlation = rep("Control", nrow(.)))
@@ -693,7 +693,7 @@ FigureS3I <- function(controlTable,posCorTable,negCorTable,xlabel, ylabel, col1,
   
 }
 
-FigureS3J <- function(mat,cols,height,width){
+FigureS4J <- function(mat,cols,height,width){
   res <- list()
   for (s in c('posCor','negCor','noCor')){
     df <- as.data.frame(mcols(mat[[s]])) %>% dplyr::count(gene_name)
