@@ -42,6 +42,9 @@ DefaultAssay(atac.object) <- 'MACS2peaks'
 coembed.object <- readRDS('data/coembed_scRNA_scATAC.RDS')
 Idents(coembed.object) <- coembed.object$celltype
 levels(coembed.object) <- c('NSC','NSC_M','IPC','IPC_M','PN1','PN2','PN3','CR','IN','MG','Mural')
+hits <- readRDS('data/hits.RDS')
+outMatch_m <- readRDS('data/P2G-Links_Multi2.RDS')
+outMatch_s <- readRDS('data/P2G-Links_Single2.RDS')
 
 seRNA_all <- readRDS("results/Cluster_PseudoBulk_RNA-Summarized-Experiment.RDS")
 sePB_all <- readRDS("results/scATAC/Cluster_PseudoBulk-Summarized-Experiment.RDS")
@@ -577,6 +580,44 @@ FigureS4D <- function(object,cols,point.size,alpha=1,anno.size,key.size,out_f,he
   dev.off()
 }
 
+               
+FigureS4E <- function(hitobject, cat_names=c("Singleome", "Multiome"), col = c("#440154ff", '#21908dff'), out_f, height, width) {
+  
+  pdf(paste0(out_f,'.pdf'),height=height,width=width)
+  draw.pairwise.venn(area1=as.numeric(queryLength(hitobject)), area2 = as.numeric(subjectLength(hitobject)), cross.area = length(hitobject) , category=cat_names, 
+                     lwd = 1, col= col, fill=c(alpha(col[1],0.3), alpha(col[2],0.3)),
+                     cex=0.8, fontfamily = 'sans', cat.pos = c(-135,135), cat.dist = c(0.05, 0.05), cat.cex = 0.5)
+  dev.off()
+  
+  
+}
+               
+               
+FigureS4F <- function(p2g_multi, p2g_single, hitobject, out_f, title, xlab='Multiome Correlation', ylab='Singleome Correlation', height, width) {
+  
+  hits_m <- as.data.frame(hitobject)
+  corr_single <- data.frame(single_corr=p2g_single$posCor$Correlation, m_gene = p2g_single$posCor$gene_name)
+  corr_multi <- data.frame(multi_corr=p2g_multi$posCor$Correlation, s_gene=p2g_multi$posCor$gene_name)
+  vec_single <- hits_m$queryHits
+  vec_single <- hits_m$queryHits
+  corr_single <- corr_single[vec_single,]
+  vec_multi <- hits_m$subjectHits
+  corr_multi <- corr_multi[vec_multi,]
+  df <- cbind(corr_multi, corr_single)
+  p <- ggplot(df, aes(x=multi_corr, y=single_corr)) + geom_pointdensity(adjust=1,alpha=1,size=1) + scale_color_gradientn(colours = colorpalette("heat",8),name='', breaks=c(1000,15000),labels=c('min','max'))  
+
+  p <- p + theme(legend.direction = "horizontal",legend.justification=c(1,1), legend.position=c(0.34, 0.97),legend.background =element_blank(),legend.key = element_blank(),legend.text = element_text(hjust = c(1.5,-0.4), vjust = 8))
+  #p <- p+stat_cor(method = "pearson", label.x = 0.35, label.y = -0.70)  
+  my_grob = grid.text(paste0('r=',round(cor.test(df[,1],df[,3])$estimate,3)), x=0.85,  y=0.1, gp=gpar(col="black", fontsize=14, fontface="bold"))
+  p1 <- p + annotation_custom(my_grob)
+  jpeg(paste0(out_f,'.jpeg'), type = 'cairo', width = width, height=height, pointsize = 1)
+  print(p1)
+  dev.off()
+  
+  
+}
+               
+               
 FigureS4G <- function(p2glinks, xlabel, ylabel, posCol, negCol, controlCol,out_f, width, height) {
   df_dist_pos <- data.frame(Distance= p2glinks$posCor$distance, Significance = rep('PosCor', length(p2glinks$posCor)))
   df_dist_neg <- data.frame(Distance = p2glinks$negCor$distance, Significance = rep('NegCor', length(p2glinks$negCor)))
@@ -598,7 +639,7 @@ FigureS4G <- function(p2glinks, xlabel, ylabel, posCol, negCol, controlCol,out_f
   dev.off()
 }
 
-FigureS3H <- function(p2glinks, xlabels, ylabels, col1, col2, width, height) {
+FigureS4H <- function(p2glinks, xlabels, ylabels, col1, col2, width, height) {
   df_pos <- data.frame(Domain = p2glinks$posCor$domain, Correlation = rep("Positive", length(p2glinks$posCor)))
   df_pos_tab <- as.data.frame(table(df_pos)) 
   df_pos_tab <- df_pos_tab %>% mutate(., 
@@ -634,7 +675,7 @@ FigureS3H <- function(p2glinks, xlabels, ylabels, col1, col2, width, height) {
   
 }
 
-FigureS3I <- function(controlTable,posCorTable,negCorTable,xlabel, ylabel, col1, col2, col3, width, height){
+FigureS4I <- function(controlTable,posCorTable,negCorTable,xlabel, ylabel, col1, col2, col3, width, height){
   Df_positive <- posCorTable %>% mutate(Correlation = rep("PosCor", nrow(.)))
   Df_negative <- negCorTable %>% mutate(Correlation = rep("NegCor", nrow(.)))
   Df_control <- controlTable %>% mutate(Correlation = rep("Control", nrow(.)))
@@ -652,7 +693,7 @@ FigureS3I <- function(controlTable,posCorTable,negCorTable,xlabel, ylabel, col1,
   
 }
 
-FigureS3J <- function(mat,cols,height,width){
+FigureS4J <- function(mat,cols,height,width){
   res <- list()
   for (s in c('posCor','negCor','noCor')){
     df <- as.data.frame(mcols(mat[[s]])) %>% dplyr::count(gene_name)
@@ -837,7 +878,8 @@ FigureS4A(rna.object=rna.object,atac.object=atac.object, prediction.score = 0.5,
 FigureS4B(atac.object=atac.object,out_f='FigureS4B',width=4, height=4)
 FigureS4C(atac.object,coembed.object,linkCol=rep('grey',3),out_f='FigureS4C',width=500,height=800,zoom=2)
 FigureS4D(object=coembed.object,rep_colors,point.size=1.5,alpha=0.8,anno.size=14,key.size=6,out_f='FigureS4D',height=6,width=6,plot_filled=T,stroke=0.1,theme=theme_border)
-#Figures S4e and f are generated externally
+FigureS3E(hitobject = hits, out_f='FigureS3E',height=3, width=3.45 )
+FigureS3F(p2g_multi = outMatch_m, p2g_single = outMatch_s, hitobject = hits, out_f='FigureS3F', height=520, width=480 )
 FigureS4G(p2glinks, xlabel = "Distance (KB)", ylabel = "N connections", posCol = "darkred", negCol = "darkblue", controlCol = "grey",out_f='FigureS4G', width = 6, height=6)
 
 mat <- p2glinks$posCor
@@ -862,8 +904,10 @@ mat <- Figure3A(selected_peaks=p2glinks$negCor,scaleMax=F,seRNA=seRNA_all,sePB=s
                 which_clusters_rna = c('NSC','IPC','PN1','PN2','PN3'),which_clusters = c('NSC','IPC','PN1','PN2'),
                 features=NULL,
                 cols1=colorRamp2(seq(-2,2,length.out=length(heatmap_colors)), heatmap_colors),cluster_cols1=RNA_cluster_colors[-c(2,4)],cluster_cols2=RNA_cluster_colors[-c(2,4)],
-                cols2=colorRamp2(seq(-2,2,length.out=9), rev(colorpalette('rdbu',9))),anno.size=12,height=12,width=10)
+                cols2=colorRamp2(seq(-2,2,length.out=9), rev(colorpalette('rdbu',9))),anno.size=12,height=12,width=10)      
 write.table(mat,file = paste0('results/P2G_binaryMat_negCor.tsv'),quote = F,col.names=T,row.names=F,sep='\t')
+                         
+
 FigureS3H(p2glinks, ylabels = "% of all", col1 = "darkred", col2 = "darkblue", xlabels = "Correlation Type", width = 6, height = 6)
 FigureS3I(controlTable=readRDS('/home/faye/E14_Analysis/Figures/controlTable.RDS'),
           posCorTable=readRDS('/home/faye/E14_Analysis/Figures/posCorTable.RDS'),
