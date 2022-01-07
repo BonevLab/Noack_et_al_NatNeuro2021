@@ -998,6 +998,7 @@ scCoveragePlot <- function(
         ),
         plot.margin = unit(c(0,0,0,0), "cm")
       )
+    p1 <- rasterize(p1, layers='Point', dpi=300)
     g <- ggplot_gtable(ggplot_build(p1))
     stripr <- which(grepl('strip-r', g$layout$name))
     fills <- cluster_cols
