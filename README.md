@@ -57,7 +57,7 @@
 
 **Figure1** - scRNA-seq analysis of mouse E14.5 cortical development. Associated Figure S1-S2. 
 
-**Figure2** - scATAC-seq identifies dynamic TF motis and variable distal regulatory elements. Associated FIgure S3. 
+**Figure2** - scATAC-seq identifies dynamic TF motis and variable distal regulatory elements. Associated Figure S3. 
 
 **Figure3** - Lineage dynamics of enhancer-gene pairs and transcription factor motifs. Associated Figure S4-S5.
 
@@ -70,6 +70,26 @@
 **Figure7** - Transcription factors are associated with changes in both chromatin looping and DNA methylation levels. 
 
 **Figure8** - Neurog2 is sufficient to induce multilayered epigenome changes in vivo. 
+
+**Extended Data Fig. 1** - Quality control and further validation of the scRNA-seq data 
+
+**Extended Data Fig. 2** - Pseudo-temporal analysis and comparison to human data.
+
+**Extended Data Fig. 3** - Quality control and validation of the scATAC-seq data.
+
+**Extended Data Fig. 4** - scATAC-scRNA integration metrics and identification of enhancer-gene pairs. 
+
+**Extended Data Fig. 5** - Properties of the identified enhancer-gene links.
+
+**Extended Data Fig. 6** - In vivo (immune-)MPRA validates cell type specific activity of identified CREs and their regulation by transription factors.
+
+**Extended Data Fig. 7** - Global reorganization of the 3D genome in vivo during differentiation.
+
+**Extended Data Fig. 8** - Non-correlated enhancer-gene pairs are not associated with dynamic chromatin looping or changes at DNA methylation levels. 
+
+**Extended Data Fig. 9** - Transcription factors associated with cell-type-specific looping based on positively correlated enhancer-gene pairs. 
+
+**Extended Data Fig. 10** - No global reorganization of chromatin accessibility, DNA methylation and 3D genome architecture upon Neurog2 overexpression. 
 
 
 # Raw Data Download 
