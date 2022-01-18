@@ -51,7 +51,7 @@
 
 **scRNA_scATAC_Integration_05_P2G_monocle** - Pseudotime analysis on integrated scRNA-scATAC object using Monocle3. Analyses also include model fitting to identify changes of accessibility and motif deviations as a function of pseudotime.
 
-**scRNA_scATAC_Integration_06_chromVar** - 
+**scRNA_scATAC_Integration_06_chromVar** - Motif analysis for integrated object using chromVar.
 
 ## List of Figures 
 
