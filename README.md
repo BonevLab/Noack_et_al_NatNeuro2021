@@ -55,21 +55,21 @@
 
 ## List of Figures 
 
-**Figure1** - scRNA-seq analysis of mouse E14.5 cortical development. Associated Extended Data Fig.1-2. 
+**Figure1** - scRNA-seq analysis of mouse E14.5 cortical development. Associated Extended Data Fig. 1-2. 
 
-**Figure2** - scATAC-seq identifies dynamic TF motis and variable distal regulatory elements. Associated Extended Data Fig.3. 
+**Figure2** - scATAC-seq identifies dynamic TF motis and variable distal regulatory elements. Associated Extended Data Fig. 3. 
 
-**Figure3** - Lineage dynamics of enhancer-gene pairs and transcription factor motifs. Associated Extended Data Fig.4-5.
+**Figure3** - Lineage dynamics of enhancer-gene pairs and transcription factor motifs. Associated Extended Data Fig. 4-5.
 
-**Figure4** - _In vivo_ immunoMPRA validates cell type specific activity of identified CREs and their regulation by transcription factors. Associated Extended Data Fig.6.
+**Figure4** - _In vivo_ immunoMPRA validates cell type specific activity of identified CREs and their regulation by transcription factors. Associated Extended Data Fig. 6.
 
-**Figure5** - ImmunoMethyl-HiC identifies DNA methylation-independent global changes in 3D genome architecture during cortical development. Associated Extended Data Fig.7.
+**Figure5** - ImmunoMethyl-HiC identifies DNA methylation-independent global changes in 3D genome architecture during cortical development. Associated Extended Data Fig. 7.
 
-**Figure6** - Dynamic enhancer-promoter loops and DNA methylation levels at regulatory regions. Associated Extended Data Fig.8. 
+**Figure6** - Dynamic enhancer-promoter loops and DNA methylation levels at regulatory regions. Associated Extended Data Fig. 8. 
 
-**Figure7** - Transcription factors are associated with changes in both chromatin looping and DNA methylation levels. Associated Extended Data Fig.9. 
+**Figure7** - Transcription factors are associated with changes in both chromatin looping and DNA methylation levels. Associated Extended Data Fig. 9. 
 
-**Figure8** - Neurog2 is sufficient to induce multilayered epigenome changes in vivo. Associated Extended Data Fig.10. 
+**Figure8** - Neurog2 is sufficient to induce multilayered epigenome changes in vivo. Associated Extended Data Fig. 10. 
 
 **Extended Data Fig. 1** - Quality control and further validation of the scRNA-seq data 
 
