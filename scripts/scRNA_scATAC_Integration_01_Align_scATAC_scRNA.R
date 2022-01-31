@@ -1,7 +1,6 @@
 #Integration of scRNA and scATAC-seq data 
 #With adaptations from Granja et al. (2019) 
 
-
 #Multimodal profiling of the transcriptional regulatory landscape
 #of developing mouse cortex identifies Neurog2 as a key epigenome remodeler
 #Cite Noack et al. (2022) 
