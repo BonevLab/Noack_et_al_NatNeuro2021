@@ -1,9 +1,11 @@
-#Clustering and scATAC-seq UMAP for Hematopoiesis data
-#06/02/19
-#Cite Granja*, Klemm*, Mcginnis* et al. 
-#A single cell framework for multi-omic analysis of disease identifies 
-#malignant regulatory signatures in mixed phenotype acute leukemia (2019)
-#Created by Jeffrey Granja
+#Integration of scRNA and scATAC-seq data 
+#With adaptations from Granja et al. (2019) 
+
+
+#Multimodal profiling of the transcriptional regulatory landscape
+#of developing mouse cortex identifies Neurog2 as a key epigenome remodeler
+#Cite Noack et al. (2022) 
+
 library(Seurat)
 library(Matrix)
 library(GenomicRanges)
