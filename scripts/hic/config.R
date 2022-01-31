@@ -2,10 +2,7 @@ genome <- 'mm10'
 chrom_sizes_f <- '/home/hpc/bonev/annotations/mm10/mm10.chrom.sizes'
 main_f <- '/home/hpc/bonev/projects/hic/sc/'
 map3c_f <- "/home/hpc/bonev/software/hicpipe/" 
-#cells <- c('GFP_IUE24h','NGN2_IUE24h')
-#cells <- c('P7_L4_WT','P7_L4_IOD')
 cells <- c('E14_NSC','E14_IPC','E14_PN','GFP_IUE24h','NGN2_IUE24h')
-#cells <- c('E12_NSC','E13_NSC','E14_NSC','E15_NSC','E16_NSC','E17_NSC')
 bowtieInd <- "/home/hpc/bonev/annotations/mm10/mm10/mm10"
 blacklist <- read.table('/home/hpc/bonev/annotations/mm10/mm10_blacklist.bed')
 
