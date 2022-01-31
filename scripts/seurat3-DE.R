@@ -67,32 +67,6 @@ dev.off()
 pdf('plots/scRNA/DE_top40.pdf',height=40,width=20)
 DoHeatmap(cortex, features = top40$gene,raster = T) + NoLegend()
 dev.off()
-#idents_to_keep <- cluster_annot
-#idents_to_keep <- idents_to_keep[c(1,2,3,4,5,6,7,8,9,10,11,13,15,17,18,20,22,23),]
-#idents_to_keep$CellType <- droplevels(idents_to_keep$CellType)
-#cortex_filtered <- subset(cortex,idents = idents_to_keep$CellType)
-#saveRDS(cortex_filtered,'data/merged_scRNA_filtered_IDs.RDS')  
-
-#### Normal transformation ####
-
-#cortex <- cortex_filtered
-#cortex <- RunUMAP(cortex, dims = 1:20,min.dist = 0.5,spread = 1.5,n.components = 2L,n.epochs = 2000)
-#pdf('plots/scRNA/filtered_UMAP.pdf',height=8,width=16)
-#DimPlot(cortex, reduction = "umap",label = T,group.by='orig.ident',cols=sample_colors(length(unique(cortex$orig.ident))))
-#DimPlot(cortex, reduction = "umap",label = T,repel=T,cols=cluster_colors(length(unique(Idents(cortex)))))
-#dev.off()
-#for (set in c('diff_markers','layer_markers','temp_markers','other_markers','regional_markers')){
-#  pdf(paste0('plots/scRNA/unfiltered_',set,'.pdf'),height=16,width=16)
-#  print(FeaturePlot(cortex, features = get(set),cols = gene_colors(3),pt.size = 0.1,label = T))
-#  dev.off()
-#}
-#pdf(paste0('plots/scRNA/unfiltered_','Features','.pdf'),height=16,width=16)
-#print(FeaturePlot(cortex, features = c('nCount_RNA','nFeature_RNA','percent.mt'),cols = gene_colors(3),pt.size = 0.1,label = T))
-#print(VlnPlot(cortex,'nFeature_RNA',pt.size = 0.001))
-#print(VlnPlot(cortex,'nCount_RNA',pt.size = 0.001))
-#print(VlnPlot(cortex,'percent.mt',pt.size = 0.001))
-#dev.off()
-
 
 
 saveRDS(cortex_filtered,'data/merged_scRNA_filtered_IDs.RDS')  
