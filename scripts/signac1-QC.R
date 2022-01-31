@@ -93,23 +93,7 @@ for (i in 1:length(input_dirs)){
     tss.ranges <- keepStandardChromosomes(tss.ranges, pruning.mode = 'coarse')
     tss.ranges <- tss.ranges[!(seqnames(tss.ranges)%in%c('chrX','chrY','chrM')),]
     seqlevels(tss.ranges) <- seqlevels(tss.ranges)[1:19]
-  #  cortex.atac <- TSSEnrichment(object = cortex.atac, tss.positions = tss.ranges)
-    ##########
-    
-  #  pdf(paste0('plots/scATAC/QC/',sample_names[i],'_TSSvsFragments.pdf'),width=16,height=8)
-  #  par(mfrow=c(1,2))
-  #  heatscatter(log10(cortex.atac$passed_filters),(cortex.atac$TSS_fragments/cortex.atac$passed_filters*100),xlab='uniqueFrags',ylab='TSS ratio',main=sample_names[i],cor = F,ylim=c(0,60),xlim=c(3,5.5),axes=F)
-  #  magaxis(unlog='x',grid=F,tcl=(-0.5))
-  #  heatscatter(log10(cortex.atac$passed_filters),cortex.atac$TSS.enrichment,xlab='uniqueFrags',ylab='TSS enrichment',main=sample_names[i],cor = F,ylim=c(0,15),xlim=c(3,5.5),axes=F)
-  #  abline(h = tss_enrichment_filter,v = log10(unique_frags_filter),col='grey80',lty=2)
-  #  magaxis(unlog='x',grid=F,tcl=(-0.5))
-  #  dev.off()
-    
-  #  pdf(paste0('plots/scATAC/QC/',sample_names[i],'_TSSenrichment.pdf'),width=16,height=8)
-  #  cortex.atac$high.tss <- ifelse(cortex.atac$TSS.enrichment > 2, 'High', 'Low')
-  #  TSSPlot(cortex.atac, group.by = 'high.tss') + ggtitle("TSS enrichment score") + NoLegend()
-  #  dev.off()
-    
+
     pdf(paste0('plots/scATAC/QC/',sample_names[i],'_QCplot1.pdf'),width=12,height=12)
     print(VlnPlot(
       object = cortex.atac,
