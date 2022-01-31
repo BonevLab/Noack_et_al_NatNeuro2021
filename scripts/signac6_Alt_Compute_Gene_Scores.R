@@ -1,4 +1,4 @@
-#Integration of scRNA and scATAC-seq data 
+#Computing gene scores 
 #With adaptations from Granja et al. (2019) 
 
 #Multimodal profiling of the transcriptional regulatory landscape
