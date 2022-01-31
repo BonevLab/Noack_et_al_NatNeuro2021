@@ -3,8 +3,6 @@ library(Seurat)
 library(ggplot2)
 library(harmony)
 set.seed(1234)
-#library(velocyto.R)
-#library(SeuratWrappers)
 
 source('scripts/plot_functions.R')
 source('scripts/config.R')
@@ -13,11 +11,9 @@ normalizations=c('VST','SCT')
 nDims <- c(20,25,30,35)
 resolutions <- c(0.8,1,1.2)
 umap_methods <- 1
-integrate_with_Telley <- FALSE
 
 ##### Initialize objects #####
 cortex <- readRDS('data/merged_scRNA_filtered.RDS')
-#telley <- readRDS('data/merged_Telley_scRNA_filtered.RDS')
 
 
 #### Some Bustools inspired QC plots
@@ -163,34 +159,4 @@ dev.off()
 
 saveRDS(cortex,file='data/merged_scRNA_filtered_umap.RDS')
 
-###############################################
-#### Integration with Telley data #############
-###############################################
-if (integrate_with_Telley){
-  telley <- SCTransform(telley, vars.to.regress = c("percent.mt"), verbose = TRUE)
-  telley <- RunPCA(telley, npcs = 70, verbose = FALSE)
-  ElbowPlot(telley, ndims = 70)
-  telley <- FindNeighbors(telley, dims = 1:nDims)
-  telley <- FindClusters(telley, resolution = resolution)
-  telley <- RunUMAP(telley, dims = 1:nDims)
-  DimPlot(telley, reduction = "umap",label = T,group.by='orig.ident')
-  FeaturePlot(telley, features = c('Gfap'),cols = c('grey','red','black'),pt.size = 0.1,label = T,ncol = 3)
-  for (marker_gene in time_genes){print(FeaturePlot(telley, features = marker_gene,cols = c('grey','red','black'),pt.size = 0.1))}
-  saveRDS(telley,'data/telley_umap.RDS')
-  
-  
-  int.features <- SelectIntegrationFeatures(object.list = c(cortex,telley), nfeatures = 3000)
-  int.list <- PrepSCTIntegration(object.list = c(cortex,telley), anchor.features = int.features)
-  int.anchors <- FindIntegrationAnchors(object.list = int.list, normalization.method = "SCT", 
-                                        anchor.features = int.features, verbose = TRUE)
-  cortex.integrated <- IntegrateData(anchorset = int.anchors, normalization.method = "SCT")
-  cortex.integrated <- RunPCA(cortex.integrated,npcs=70, verbose = FALSE)
-  ElbowPlot(cortex.integrated, ndims = 70)
-  saveRDS(cortex.integrated,'data/cortex_telley_integrated.RDS')
-  cortex.integrated <- FindNeighbors(cortex.integrated, dims = 1:nDims)
-  cortex.integrated <- FindClusters(cortex.integrated, resolution = resolution)
-  cortex.integrated <- RunUMAP(cortex.integrated, dims = 1:nDims)
-  DimPlot(cortex.integrated, reduction = "umap",label = T,group.by='orig.ident')
-  FeaturePlot(cortex.integrated, features = c('Hes5'),cols = c('grey','red','black'),pt.size = 0.1,label = T)
-}
-##############################################
+
