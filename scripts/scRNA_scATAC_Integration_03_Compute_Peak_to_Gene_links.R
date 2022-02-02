@@ -1,4 +1,4 @@
-#Integration of scRNA and scATAC-seq data 
+#Identifying putative enhancers through peak-gene correlation analysis
 #With adaptations from Granja et al. (2019) 
 
 #Multimodal profiling of the transcriptional regulatory landscape
