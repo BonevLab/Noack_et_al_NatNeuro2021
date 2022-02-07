@@ -1,11 +1,11 @@
-# Multimodal profiling of the transcriptional regulatory landscape of developing mouse cortex identifies Neurog2 as a key epigenome remodeler (Noack F., Vangelisti S., Raffl G., Carido M., Diwakar J., Chong F., Bonev B. 2022)
+# Multimodal profiling of the transcriptional regulatory landscape of developing mouse cortex identifies Neurog2 as a key epigenome remodeler 
+
+*<h3>Noack F., Vangelisti S., Raffl G., Carido M., Diwakar J., Chong F., Bonev B. Nature Neuroscience 2022</h3>*
+
+*<h3>[Please find the publication here](https://www.nature.com/articles/s41593-021-01002-4)</h3>*
+
 
 ![](Gif1.gif)
-
-## **Link** :
-
-## Please cite : Noack et al., Multimodal profiling of the transcriptional regulatory landscape of developing mouse cerebral cortex identifies Neurog2 as a key epigenome remodeler. Nature Neuroscience (2022) 
-
 
 # Description of Scripts and Analysis 
 
